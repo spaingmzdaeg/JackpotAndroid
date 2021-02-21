@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/lay"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:weightSum="3"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:scaleType="centerInside"
+            android:id="@+id/image1"
+            android:layout_weight = "1"
+            android:layout_height="match_parent"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:scaleType="centerInside"
+            android:id="@+id/image2"
+            android:layout_weight = "1"
+            android:layout_height="match_parent"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:scaleType="centerInside"
+            android:id="@+id/image3"
+            android:layout_weight = "1"
+            android:layout_height="match_parent"/>
+
+
+    </LinearLayout>
+
+    <Button
+        android:text="agite celular o presione el boton para jugar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lay"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/btn1"/>
+
+    <Button
+        android:text="Prueba Insercion BD"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn1"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/btn2"/>
+
+    <Button
+        android:text="Mostrar Resultados"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn2"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/btn3"/>
+
+
+
+
+
+    </RelativeLayout>

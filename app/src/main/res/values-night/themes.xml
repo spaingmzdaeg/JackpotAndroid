@@ -1,0 +1,10 @@
+<resources>
+    <!-- Base application theme NIGHT. -->
+    <style name="Theme.AplicacionAcelerometroJackpot" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#FFC107</item>
+        <item name="colorPrimaryDark">@color/purple700</item>
+        <item name="colorAccent">#E91E63</item>
+    </style>
+
+</resources>
