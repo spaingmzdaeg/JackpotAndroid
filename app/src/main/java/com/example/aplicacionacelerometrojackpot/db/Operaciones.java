@@ -7,6 +7,7 @@ public class Operaciones {
                     Resultados.ResultadosEntrada.COLUMN_RESULTADO_A + " TEXT," +
                     Resultados.ResultadosEntrada.COLUMN_RESULTADO_B + " TEXT," +
                     Resultados.ResultadosEntrada.COLUMN_RESULTADO_C + " TEXT," +
+                    Resultados.ResultadosEntrada.COLUMN_RESULTADO_JUEGO + " TEXT," +
                     Resultados.ResultadosEntrada.COLUMN_RESULTADO_FINAL + " TEXT)";
 
     public static final String SQL_ELIMINAR_ENTRADAS =

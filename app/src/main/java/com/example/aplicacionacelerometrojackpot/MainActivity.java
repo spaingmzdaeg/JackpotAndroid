@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.AnimationDrawable;
 import android.hardware.Sensor;
@@ -14,6 +15,7 @@ import android.hardware.SensorListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.BaseColumns;
 import android.util.FloatMath;
 import android.view.View;
 import android.widget.Button;
@@ -22,8 +24,13 @@ import android.widget.Toast;
 
 import com.example.aplicacionacelerometrojackpot.db.Resultados;
 import com.example.aplicacionacelerometrojackpot.db.ResultadosDbHelper;
+import com.example.aplicacionacelerometrojackpot.regresionlineal.RegresionLineal;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+
+import static java.util.Arrays.asList;
 
 public class MainActivity extends AppCompatActivity  {
 
@@ -64,7 +71,7 @@ public class MainActivity extends AppCompatActivity  {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //insertarDatos();
+                obtenerProbabilidadDeGanarRL();
 
 
 
@@ -118,6 +125,7 @@ public class MainActivity extends AppCompatActivity  {
             values.put(Resultados.ResultadosEntrada.COLUMN_RESULTADO_A,String.valueOf(n1));
             values.put(Resultados.ResultadosEntrada.COLUMN_RESULTADO_B,String.valueOf(n2));
             values.put(Resultados.ResultadosEntrada.COLUMN_RESULTADO_C,String.valueOf(n3));
+            values.put(Resultados.ResultadosEntrada.COLUMN_RESULTADO_JUEGO,String.valueOf(3));
             values.put(Resultados.ResultadosEntrada.COLUMN_RESULTADO_FINAL,"jackpot");
 
             long newRowId = db.insert(Resultados.ResultadosEntrada.TABLE_NAME, null, values);
@@ -127,6 +135,7 @@ public class MainActivity extends AppCompatActivity  {
             values.put(Resultados.ResultadosEntrada.COLUMN_RESULTADO_A,String.valueOf(n1));
             values.put(Resultados.ResultadosEntrada.COLUMN_RESULTADO_B,String.valueOf(n2));
             values.put(Resultados.ResultadosEntrada.COLUMN_RESULTADO_C,String.valueOf(n3));
+            values.put(Resultados.ResultadosEntrada.COLUMN_RESULTADO_JUEGO,String.valueOf(2));
             values.put(Resultados.ResultadosEntrada.COLUMN_RESULTADO_FINAL,"amazing");
 
             long newRowId = db.insert(Resultados.ResultadosEntrada.TABLE_NAME, null, values);
@@ -136,6 +145,7 @@ public class MainActivity extends AppCompatActivity  {
             values.put(Resultados.ResultadosEntrada.COLUMN_RESULTADO_A,String.valueOf(n1));
             values.put(Resultados.ResultadosEntrada.COLUMN_RESULTADO_B,String.valueOf(n2));
             values.put(Resultados.ResultadosEntrada.COLUMN_RESULTADO_C,String.valueOf(n3));
+            values.put(Resultados.ResultadosEntrada.COLUMN_RESULTADO_JUEGO,String.valueOf(1));
             values.put(Resultados.ResultadosEntrada.COLUMN_RESULTADO_FINAL,"fail");
 
             long newRowId = db.insert(Resultados.ResultadosEntrada.TABLE_NAME, null, values);
@@ -286,6 +296,24 @@ public class MainActivity extends AppCompatActivity  {
                 getScore();
             }
         },500);
+    }
+
+    public void obtenerProbabilidadDeGanarRL(){
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String query = "SELECT * FROM resultado_jackpot";
+        Cursor cursor = db.rawQuery(query,null);
+        RegresionLineal rl = new RegresionLineal();
+      //  rl.x.add(Integer.parseInt(cursor.getString(cursor.getColumnIndex(BaseColumns._ID))));
+        //rl.y.add(Integer.parseInt(cursor.getString(cursor.getColumnIndex("resultado_juego"))));
+        List<Integer> x = new ArrayList<>();
+        List<Integer> y = new ArrayList<>();
+        while(cursor.moveToNext()) {
+            x.add(Integer.parseInt(cursor.getString(cursor.getColumnIndex(BaseColumns._ID))));
+            y.add(Integer.parseInt(cursor.getString(cursor.getColumnIndex("resultado_juego"))));
+        }
+        
+        Toast.makeText(this,String.valueOf(rl.prediccionParaValor(3,x,y))+"%",Toast.LENGTH_SHORT).show();
+
     }
 
     @Override

@@ -16,6 +16,7 @@ public final class Resultados  {
         public static final String COLUMN_RESULTADO_A = "resultado_a";
         public static final String COLUMN_RESULTADO_B = "resultado_b";
         public static final String COLUMN_RESULTADO_C = "resultado_c";
+        public static final String COLUMN_RESULTADO_JUEGO = "resultado_juego";
         public static final String COLUMN_RESULTADO_FINAL = "resultado_final";
     }
 

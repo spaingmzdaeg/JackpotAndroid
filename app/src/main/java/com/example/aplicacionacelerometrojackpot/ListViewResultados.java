@@ -27,9 +27,11 @@ public class ListViewResultados extends AppCompatActivity {
 
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-        String query = "SELECT * FROM resultado_jackpot ORDER BY  resultado_final"; // No trailing ';'
+        String query = "SELECT * FROM resultado_jackpot"; // No trailing ';'
+       // String query = "SELECT * FROM resultado_jackpot ORDER BY  resultado_final"; // No trailing ';'
 
         Cursor cursor = db.rawQuery(query,null);
+
 
 
         ResultadosAdapter adapter = new ResultadosAdapter(

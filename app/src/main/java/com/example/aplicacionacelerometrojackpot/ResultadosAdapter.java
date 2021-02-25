@@ -19,20 +19,22 @@ public class ResultadosAdapter extends ResourceCursorAdapter {
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
         TextView id_resultado = (TextView) view.findViewById(R.id.text_view_id_resultado);
-        id_resultado.setText(cursor.getString(cursor.getColumnIndex(BaseColumns._ID)));
+        id_resultado.setText("ID:"+cursor.getString(cursor.getColumnIndex(BaseColumns._ID)));
 
         TextView resultado_a = (TextView) view.findViewById(R.id.text_view_resultado_a);
-        resultado_a.setText(cursor.getString(cursor.getColumnIndex("resultado_a")));
+        resultado_a.setText("resultado_a:"+cursor.getString(cursor.getColumnIndex("resultado_a")));
 
         TextView resultado_b = (TextView) view.findViewById(R.id.text_view_resultado_b);
-        resultado_b.setText(cursor.getString(cursor.getColumnIndex("resultado_b")));
+        resultado_b.setText("resultado_b:"+cursor.getString(cursor.getColumnIndex("resultado_b")));
 
         TextView resultado_c = (TextView) view.findViewById(R.id.text_view_resultado_c);
-        resultado_c.setText(cursor.getString(cursor.getColumnIndex("resultado_c")));
+        resultado_c.setText("resultado_c:"+cursor.getString(cursor.getColumnIndex("resultado_c")));
+
+        TextView resultado_juego = (TextView) view.findViewById(R.id.text_view_resultado_juego);
+        resultado_juego.setText("resultado_juego:"+cursor.getString(cursor.getColumnIndex("resultado_juego")));
 
         TextView resultado_final = (TextView) view.findViewById(R.id.text_view_resultado_final);
-        resultado_final.setText(cursor.getString(cursor.getColumnIndex("resultado_final")));
-
+        resultado_final.setText("resultado_final:"+cursor.getString(cursor.getColumnIndex("resultado_final")));
 
     }
 }
